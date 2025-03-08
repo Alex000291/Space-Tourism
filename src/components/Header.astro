@@ -4,23 +4,47 @@
 <div class="header">
   <img src="/assets/shared/logo.svg" alt="">
   <div class="nav">
-    <a href="/">Home</a>
-    <a href="/destinations">Destinations</a>
-    <a href="/crew">Crew</a>
-    <a href="technology">Technology</a>
+    <a href="/">00 Home</a>
+    <a href="/destinations">01 Destinations</a>
+    <a href="/crew">02 Crew</a>
+    <a href="technology">03 Technology</a>
 
+
+  </div>
       <button class="hambuger-menu">
         <img src="/assets/shared/icon-hamburger.svg" alt="">
       </button>
-  </div>
 
 </div>
+  <div class="side-bar" style="display: none;">
+    <button class="close">
+      <img src="/assets/shared/icon-close.svg" alt="">
+    </button>
+    <a href="/">00 Home</a>
+    <a href="/destinations">01 Destinations</a>
+    <a href="/crew">02 Crew</a>
+    <a href="technology">03 Technology</a>
+  </div>
+
+<script>
+  const hambugerMenu = document.querySelector('.hambuger-menu');
+  const sideBar = document.querySelector('.side-bar');
+
+  hambugerMenu.addEventListener('click', () => {
+    sideBar.style.display = sideBar.style.display === 'none' ? 'flex' : 'none';
+  });
+
+  const close = document.querySelector('.close');
+  close.addEventListener('click', () => {
+    sideBar.style.display = 'none';
+  });
+</script>
 
 <style lang="scss">
   .header {
     display: flex;
     align-items: center;
-    padding: 1rem .5rem;
+    padding: 1rem 0rem 0rem .5rem;
 
     position: relative;
   }
@@ -31,21 +55,82 @@
   }
 
   .nav {
+    display: block;
     /* align to end of the header */
     position: absolute;
-    right: 1rem;
+    right: 0rem;
 
     display: flex;
     gap: 2rem;
-    margin: 1rem 3rem;
+    margin: 1rem 0 0 3rem;
+    padding: 2rem 2rem 2rem 20%;
+
+    background-color: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+
+    & a {
+      color: white;
+      text-decoration: none;
+      font-size: 1.2rem;
+    }
   }
 
   .hambuger-menu {
+    display: none;
     position: absolute;
     right: 1rem;
+    // width: 200px;
     
     background-color: rgba(255, 255, 255, 0);
+    color: white;
 
     border: none;
+
+    cursor: pointer;
+
+  }
+
+  @media screen and (max-width: 768px) {
+    .nav {
+      display: none;
+    }
+
+    .hambuger-menu {
+      display: block;
+    }
+    
+  }
+
+  .side-bar {
+    // display: none;
+    position: absolute;
+    right: 0rem;
+    top: 0rem;
+
+    height: 100vh;
+    width: 40%;
+
+    z-index: 100;
+
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2rem 0rem 2rem 2rem;
+
+    background-color: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+
+    & .close {
+      align-self: flex-end;
+      background-color: rgba(255, 255, 255, 0);
+      border: none;
+      cursor: pointer;
+    }
+
+    & a {
+      color: white;
+      text-decoration: none;
+      font-size: 1.2rem;
+      border-right: 5px solid white;
+    }
   }
 </style>
