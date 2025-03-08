@@ -1,0 +1,51 @@
+---
+
+---
+<div class="header">
+  <img src="/assets/shared/logo.svg" alt="">
+  <div class="nav">
+    <a href="/">Home</a>
+    <a href="/destinations">Destinations</a>
+    <a href="/crew">Crew</a>
+    <a href="technology">Technology</a>
+
+      <button class="hambuger-menu">
+        <img src="/assets/shared/icon-hamburger.svg" alt="">
+      </button>
+  </div>
+
+</div>
+
+<style lang="scss">
+  .header {
+    display: flex;
+    align-items: center;
+    padding: 1rem .5rem;
+
+    position: relative;
+  }
+
+  img {
+    align-self: flex-start;
+    margin: 1rem 0rem 0rem 1rem;
+  }
+
+  .nav {
+    /* align to end of the header */
+    position: absolute;
+    right: 1rem;
+
+    display: flex;
+    gap: 2rem;
+    margin: 1rem 3rem;
+  }
+
+  .hambuger-menu {
+    position: absolute;
+    right: 1rem;
+    
+    background-color: rgba(255, 255, 255, 0);
+
+    border: none;
+  }
+</style>
