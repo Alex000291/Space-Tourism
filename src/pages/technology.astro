@@ -1,5 +1,6 @@
 ---
 import Header from "../components/Header.astro"
+import data from './data.json'
 ---
 
 <!DOCTYPE html>
@@ -11,8 +12,260 @@ import Header from "../components/Header.astro"
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
   
   <title>Frontend Mentor | Space tourism website</title>
+  <style lang="scss">
+    body {
+      background-image: url('/assets/technology/background-technology-desktop.jpg');
+      background-size: cover;
+
+      background-attachment: fixed;
+      background-position: center;
+
+      padding: 0%;
+      margin: 0%;
+    }
+
+    main {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      color: white;
+
+      margin: 7% 0 0 7%;
+    }
+
+    .title {
+      font-size: 2rem;
+      margin-bottom: 20rem;
+      text-transform: uppercase;
+
+      & span {
+        color: rgba(255, 255, 255, 0.25);
+        margin-right: 1rem;
+      }
+    }
+
+    .toggle-text-container {
+      display: flex;
+      justify-content: flex-start;
+    }
+
+    .toggle-group {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+
+      & div {
+        font-size: 2rem;
+        color: white;
+        margin-bottom: 2rem;
+        cursor: pointer;
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        width: 6rem;
+        height: 6rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+      }
+
+      //first child
+      & div:first-child {
+        background-color: white;
+        color: #1D1E35;
+      }
+
+      & div:hover {
+        border: 1px solid white;
+      }
+    }
+
+    .place-1 {
+      display: block;
+    }
+
+    .place-2 {
+      display: none;
+    }
+
+    .main-text-container {
+      margin-left: 5rem;
+      margin-right: 2rem;
+
+      & .text-1 {
+        display: block;
+        font-size: 2rem;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.25);
+      }
+
+      & .text-2 {
+        display: block;
+        font-size: 4rem;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        text-transform: uppercase;
+      }
+
+      & .text-3 {
+        display: block;
+        color: #D0D6F9;
+
+        width: 30rem;
+        line-height: 1.8;
+      }
+    }
+
+    img {
+      width: 515px;
+      height: 527px;
+      margin-top: 20rem;
+    }
+
+    @media screen and (max-width: 1200px) {
+      main {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .main-text-container {
+        margin-left: 0;
+        margin-right: 0;
+      }
+
+      .title {
+        margin-top: 10rem;
+        margin-bottom: 10rem;
+        text-align: center;
+      }
+
+      .place-1 {
+        display: none;
+      }
+
+      .place-2 {
+        display: block;
+      }
+
+      .toggle-text-container {
+        margin-top: 5rem;
+        flex-direction: column;
+
+        //put toggle button below
+        .toggle-group {
+          margin-top: 3rem;
+          flex-direction: row;
+          justify-content: center;
+          gap: 2rem;
+          color: red;
+        }
+      }
+
+      .main-text-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
 </head>
 <body>
   <Header />
+  <main>
+    <div class="text-container">
+      <div class="title"><span>03</span> space launch 101</div>
+      <div class="toggle-text-container">
+
+        <div class="place-1">
+          <div class="toggle-group">
+            <div class="toggle-1">1</div>
+            <div class="toggle-2">2</div>
+            <div class="toggle-3">3</div>
+          </div>
+        </div>
+
+        <div class="main-text-container">
+          <div class="text-1">the terminology...</div>
+          <div class="text-2">launch vehicle</div>
+          <div class="text-3">
+            A launch vehicle or carrier rocket is a rocket-propelled vehicle used to carry a 
+            payload from Earth's surface to space, usually to Earth orbit or beyond. Our 
+            WEB-X carrier rocket is the most powerful in operation. Standing 150 metres tall, 
+            it's quite an awe-inspiring sight on the launch pad!
+          </div>
+
+          <div class="place-2">
+            <div class="toggle-group">
+              <div class="toggle-1b">1</div>
+              <div class="toggle-2b">2</div>
+              <div class="toggle-3b">3</div>
+            </div>
+          </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <img src="/assets/technology/image-launch-vehicle-portrait.jpg" alt="" class="image">
+  </main>
+  <script define:vars={{data}}>
+    const toggle1 = document.querySelector('.toggle-1');
+    const toggle2 = document.querySelector('.toggle-2');
+    const toggle3 = document.querySelector('.toggle-3');
+
+    const toggle1b = document.querySelector('.toggle-1b');
+    const toggle2b = document.querySelector('.toggle-2b');
+    const toggle3b = document.querySelector('.toggle-3b');
+
+    const text1 = document.querySelector('.text-1');
+    const text2 = document.querySelector('.text-2');
+    const text3 = document.querySelector('.text-3');
+    const img = document.querySelector('.image');
+
+    function navigate(index) {
+      text2.textContent = data.technology[index].name;
+      text3.textContent = data.technology[index].description;
+      img.src = data.technology[index].images.portrait;
+
+      toggle1.style.backgroundColor = 'transparent';
+      toggle2.style.backgroundColor = 'transparent';
+      toggle3.style.backgroundColor = 'transparent';
+      toggle1.style.color = 'white';
+      toggle2.style.color = 'white';
+      toggle3.style.color = 'white';
+
+      toggle1b.style.backgroundColor = 'transparent';
+      toggle2b.style.backgroundColor = 'transparent';
+      toggle3b.style.backgroundColor = 'transparent';
+      toggle1b.style.color = 'white';
+      toggle2b.style.color = 'white';
+      toggle3b.style.color = 'white';
+
+      if (index === 0) {
+        toggle1.style.backgroundColor = 'white';
+        toggle1.style.color = '#1D1E35';
+        toggle1b.style.backgroundColor = 'white';
+        toggle1b.style.color = '#1D1E35';
+      } else if (index === 1) {
+        toggle2.style.backgroundColor = 'white';
+        toggle2.style.color = '#1D1E35';
+        toggle2b.style.backgroundColor = 'white';
+        toggle2b.style.color = '#1D1E35';
+      } else {
+        toggle3.style.backgroundColor = 'white';
+        toggle3.style.color = '#1D1E35';
+        toggle3b.style.backgroundColor = 'white';
+        toggle3b.style.color = '#1D1E35';
+      }
+    }
+
+    toggle1.addEventListener('click', () => navigate(0));
+    toggle2.addEventListener('click', () => navigate(1));
+    toggle3.addEventListener('click', () => navigate(2));
+
+    toggle1b.addEventListener('click', () => navigate(0));
+    toggle2b.addEventListener('click', () => navigate(1));
+    toggle3b.addEventListener('click', () => navigate(2));
+
+  </script>
 </body>
 </html>
