@@ -1,5 +1,6 @@
 ---
 import Header from "../components/Header.astro"
+import data from './data.json'
 
 import '../global.scss'
 ---
@@ -70,8 +71,19 @@ import '../global.scss'
 
       & span {
         margin-right: 2rem;
+
+        transition: all 0.3s ease-in-out;
+        cursor: pointer;
+      }
+
+      & span:hover {
+        color: white;
+        padding-bottom: 1rem;
+        border-bottom: 5px solid white;
       }
     }
+
+
 
     .planet {
       font-size: 12rem;
@@ -176,13 +188,13 @@ import '../global.scss'
       <span>01</span> pick your destination
     </div>
     <div class="container">
-      <img src="/assets/destination/image-moon.png" alt="">
+      <img src="/assets/destination/image-moon.png" alt="" class="image">
       <div class="text">
         <div class="nav">
-            <span>moon</span>
-            <span>mars</span>
-            <span>europa</span>
-            <span>titan</span>
+            <span class="moon">moon</span>
+            <span class="mars">mars</span>
+            <span class="europa">europa</span>
+            <span class="titan">titan</span>
         </div>
 
          <span class="planet">moon</span>
@@ -207,5 +219,37 @@ import '../global.scss'
     </div>
     
   </main>
+
+  <script define:vars={{data}}>
+    const moon = document.querySelector('.moon');
+    const mars = document.querySelector('.mars');
+    const europa = document.querySelector('.europa');
+    const titan = document.querySelector('.titan');
+
+    const img = document.querySelector('.image');
+    const planet = document.querySelector('.planet');
+    const description = document.querySelector('.description');
+    const km = document.querySelector('.km');
+    const days = document.querySelector('.days');
+
+    const type = 'Moon' || 'Mars' || 'Europa' || 'Titan';
+
+    function navigate(type) {
+      console.log(type);
+      const destination = data.destinations.find(item => item.name === type);
+
+      img.src = destination.images.png;
+      console.log(destination.images.png);
+      planet.textContent = destination.name;
+      description.textContent = destination.description;
+      km.textContent = destination.distance;
+      days.textContent = destination.travel;
+    }
+
+    moon.addEventListener('click', () => navigate('Moon'));
+    mars.addEventListener('click', () => navigate('Mars'));
+    europa.addEventListener('click', () => navigate('Europa'));
+    titan.addEventListener('click', () => navigate('Titan'));
+  </script>
 </body>
 </html>
