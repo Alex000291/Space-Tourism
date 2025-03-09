@@ -1,7 +1,22 @@
-This project is a solution to the [Frontend Mentor Space Tourism multi-page website challenge](https://www.frontendmentor.io/challenges/space-tourism-multipage-website-gRWj1URZ3).
+# Space Tourism Website
 
-The project is built using the Astro framework and SASS for styling. The assets are located in the `public/assets` directory.
+This project is a solution to the [Frontend Mentor Space Tourism multi-page website challenge](https://www.frontendmentor.io/challenges/space-tourism-multipage-website-gRWj1URZ3). An online version can be found at [this link](https://blueviolet-chough-884668.hostingersite.com).
 
-The `src` directory contains:
-- `pages`: This folder includes the four main pages of the website.
-- `components`: This folder includes reusable components such as the header.
+## Technologies Used
+
+- **Astro**: A modern static site generator.
+- **SASS**: A CSS preprocessor for styling.
+
+## Project Structure
+
+The project structure is as follows:
+
+- **public/assets**: This directory contains all the static assets such as images and icons.
+- **src**: This directory contains the source code of the project.
+  - **pages**: This folder includes the four main pages of the website:
+    - `index.astro`: The homepage.
+    - `destinations.astro`: The destinations page.
+    - `crew.astro`: The crew page.
+    - `technology.astro`: The technology page.
+  - **components**: This folder includes reusable components such as:
+    - `Header.astro`: The header component used across all pages.
