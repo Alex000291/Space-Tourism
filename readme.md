@@ -1,6 +1,6 @@
 # Space Tourism Website
 
-This project is a solution to the [Frontend Mentor Space Tourism multi-page website challenge](https://www.frontendmentor.io/challenges/space-tourism-multipage-website-gRWj1URZ3). An online version can be found at [this link](https://blueviolet-chough-884668.hostingersite.com).
+This project is a solution to the [Frontend Mentor Space Tourism multi-page website challenge](https://www.frontendmentor.io/challenges/space-tourism-multipage-website-gRWj1URZ3). An online version can be found at [this link](https://space-tourism.in).
 
 ## Technologies Used
 
