@@ -1,5 +1,6 @@
 ---
 import Header from "../components/Header.astro"
+import data from './data.json'
 ---
 
 <!DOCTYPE html>
@@ -11,8 +12,195 @@ import Header from "../components/Header.astro"
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
   
   <title>Frontend Mentor | Space tourism website</title>
+  <style lang="scss">
+    body {
+      background-image: url('/assets/crew/background-crew-desktop.jpg');
+      background-size: cover;
+
+      background-attachment: fixed;
+      background-position: center;
+
+      padding: 0%;
+      margin: 0%;
+
+
+    }
+
+    main {
+      height: 100vh;
+      display: flex;
+      justify-content: space-around;
+
+      margin: 10%;
+
+      color:white;
+    }
+
+    .text-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+
+      color: white;
+
+      & .title {
+        font-size: 2rem;
+        margin-bottom: 30vh;
+
+        & span {
+          color: rgba(255, 255, 255, 0.25);
+          margin-right: 1rem;
+        }
+      }
+    }
+
+    .role {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      color: #D0D6F9;
+    }
+
+    .name {
+      font-size: 5rem;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+    }
+
+    .bio {
+      margin-bottom: 2rem;
+      width: 50rem;
+      color: #D0D6F9;
+    }
+
+    img {
+      // calculate the magnifying factor 
+      width: 100% * 0.5;
+      margin-top: 20vh;
+      mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+    }
+
+    .dots {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+
+      // first-child white
+      & div:first-child {
+        background-color: white;
+      }
+
+      & div {
+        width: 1rem;
+        height: 1rem;
+        border-radius: 100%;
+        background-color: rgba(255, 255, 255, 0.25);
+      }
+
+      & div:hover {
+        background-color: white;
+      }
+    }
+
+    @media screen and (max-width: 1420px) {
+      main {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .text-container {
+        text-align: center;
+
+        & .title {
+          margin-top: 2rem;
+          margin-bottom: 10vh;
+        }
+
+        .role {
+          font-size: 2rem;
+          margin-bottom: 2rem;
+        }
+
+        .name {
+          font-size: 3rem;
+          margin-bottom: 2rem;
+        }
+
+        .bio {
+          margin-bottom: 2rem;
+          width: 80%;
+          align-self: center;
+        }
+
+        .dots {
+          align-self: center;
+        }
+      }
+
+      img {
+        margin-top: 10vh;
+      }
+      
+    }
+
+    
+  </style>
 </head>
 <body>
   <Header />
+  <main>
+    <div class="text-container">
+      <div class="title"><span>02</span> meet your crew</div>
+      <div class="role">commander</div>
+      <div class="name">douglas hurley</div>
+      <div class="bio">
+        Douglas Gerald Hurley is an American engineer, former Marine Corps pilot 
+        and former NASA astronaut. He launched into space for the third time as 
+        commander of Crew Dragon Demo-2.
+      </div>
+      <div class="dots">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+
+    </div>
+    <img src="/assets/crew/image-douglas-hurley.png" alt="" class="image">
+  </main>
+
+  <script define:vars={{data}}>
+    const role = document.querySelector('.role');
+    const name = document.querySelector('.name');
+    const bio = document.querySelector('.bio');
+    const img = document.querySelector('.image');
+
+    const dots = document.querySelectorAll('.dots div');
+    const dot1 = dots[0];
+    const dot2 = dots[1];
+    const dot3 = dots[2];
+    const dot4 = dots[3];
+
+    function navigate(index) {
+      role.textContent = data.crew[index].role;
+      name.textContent = data.crew[index].name;
+      bio.textContent = data.crew[index].bio;
+      img.src = data.crew[index].images.png;
+
+      console.log(img.src);
+
+      dots.forEach((dot) => {
+        dot.style.backgroundColor = 'rgba(255, 255, 255, 0.25)';
+      });
+
+      dots[index].style.backgroundColor = 'white';
+    }
+
+    dot1.addEventListener('click', () => navigate(0));
+    dot2.addEventListener('click', () => navigate(1));
+    dot3.addEventListener('click', () => navigate(2));
+    dot4.addEventListener('click', () => navigate(3));
+
+  </script>
 </body>
 </html>
