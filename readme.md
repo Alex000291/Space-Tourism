@@ -5,7 +5,7 @@ This project is a solution to the [Frontend Mentor Space Tourism multi-page webs
 ## Technologies Used
 
 - **Astro**: A modern static site generator.
-- **SASS**: A CSS preprocessor for styling.
+- **Sass**: A CSS preprocessor for styling.
 
 ## Project Structure
 
@@ -20,3 +20,4 @@ The project structure is as follows:
     - `technology.astro`: The technology page.
   - **components**: This folder includes reusable components such as:
     - `Header.astro`: The header component used across all pages.
+     
